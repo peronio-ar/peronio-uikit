@@ -1,14 +1,14 @@
 {
   "name": "peronio-uikit",
   "version": "0.62.0",
-  "description": "Set of UI components for pancake projects",
+  "description": "Set of UI components for peronio projects",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/peronio-ar/pancake-uikit",
+  "repository": "https://github.com/peronio-ar/peronio-uikit",
   "license": "MIT",
   "scripts": {
     "start": "yarn storybook",
