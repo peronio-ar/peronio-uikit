@@ -1,5 +1,5 @@
-import React from "react";
-import { SvgProps } from "../types";
+import React from 'react';
+import { SvgProps } from '../types';
 interface LogoProps extends SvgProps {
     isDark: boolean;
 }
