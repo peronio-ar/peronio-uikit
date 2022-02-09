@@ -1,5 +1,5 @@
-import React from "react";
-import { Colors } from "../../theme";
+import React from 'react';
+import { Colors } from '../../theme';
 export interface Props {
     color?: keyof Colors;
     cakePriceUsd?: number;
