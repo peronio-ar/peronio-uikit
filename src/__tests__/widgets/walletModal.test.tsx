@@ -4,7 +4,9 @@ import { renderWithTheme } from "../../testHelpers";
 import ConnectModal from "../../widgets/WalletModal/ConnectModal";
 
 it("renders ConnectModal correctly", () => {
-  const { asFragment } = renderWithTheme(<ConnectModal login={noop} t={(key: string) => key} />);
+  const { asFragment } = renderWithTheme(
+    <ConnectModal login={noop} t={(key: string) => key} />
+  );
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {
@@ -655,7 +657,7 @@ it("renders ConnectModal correctly", () => {
             </p>
             <a
               class="c22"
-              href="https://docs.pancakeswap.finance/get-started/connection-guide"
+              href="https://quick.peronio.ar/"
               rel="noreferrer noopener"
               scale="md"
               target="_blank"
