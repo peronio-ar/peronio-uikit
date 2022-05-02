@@ -1,13 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import { PeronioCircle } from '../Svg';
-import Text from '../Text/Text';
-import Skeleton from '../Skeleton/Skeleton';
-import { Colors } from '../../theme';
+import React from "react";
+import styled from "styled-components";
+import { PeronioCircle } from "../Svg";
+import Text from "../Text/Text";
+import Skeleton from "../Skeleton/Skeleton";
+import { Colors } from "../../theme";
 
 export interface Props {
   color?: keyof Colors;
   cakePriceUsd?: number;
+  onClick?: () => void;
 }
 
 const PriceLink = styled.a`
@@ -23,13 +24,10 @@ const PriceLink = styled.a`
   }
 `;
 
-const CakePrice: React.FC<Props> = ({ cakePriceUsd, color = 'textSubtle' }) => {
+const CakePrice: React.FC<Props> = ({ cakePriceUsd, color = "textSubtle" }) => {
   return cakePriceUsd ? (
-    <PriceLink
-      href='https://app.peronio.ar/'
-      // target='_blank'
-    >
-      <PeronioCircle width='24px' mr='8px' />
+    <PriceLink>
+      <PeronioCircle width="24px" mr="8px" />
       <Text color={color} bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
     </PriceLink>
   ) : (

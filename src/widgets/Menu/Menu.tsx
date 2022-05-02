@@ -84,6 +84,7 @@ const Menu: React.FC<NavProps> = ({
   langs,
   buyCakeLabel,
   children,
+  onClick,
 }) => {
   const { isMobile } = useMatchBreakpoints();
   const [showMenu, setShowMenu] = useState(true);
@@ -164,7 +165,7 @@ const Menu: React.FC<NavProps> = ({
           <Flex alignItems="center" height="100%">
             {!isMobile && (
               <Box mr="12px">
-                <CakePrice cakePriceUsd={cakePriceUsd} />
+                <CakePrice onClick={onClick} cakePriceUsd={cakePriceUsd} />
               </Box>
             )}
             <Box mt="4px">
