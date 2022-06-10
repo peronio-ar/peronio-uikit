@@ -18,6 +18,7 @@ import {
 } from "./config";
 import { NavProps } from "./types";
 import LangSelector from "../../components/LangSelector/LangSelector";
+import { PEArsPrice } from "../../components/PEArsPrice";
 
 const Wrapper = styled.div`
   position: relative;
@@ -164,7 +165,7 @@ const Menu: React.FC<NavProps> = ({
           <Flex alignItems="center" height="100%">
             {!isMobile && (
               <Box mr="12px">
-                <CakePrice cakePriceUsd={cakePriceUsd} />
+                <PEArsPrice pePriceArs={cakePriceUsd} />
               </Box>
             )}
             <Box mt="4px">
