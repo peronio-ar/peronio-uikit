@@ -29,4 +29,5 @@ export interface NavProps {
     langs: Language[];
     setLang: (lang: Language) => void;
     onClick: () => void;
+    contentTooltip: any;
 }

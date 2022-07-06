@@ -1,14 +1,16 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import { PeronioCircle } from "../Svg";
 import Text from "../Text/Text";
 import Skeleton from "../Skeleton/Skeleton";
 import { Colors } from "../../theme";
+import { Input } from "../Input";
 
 export interface Props {
   color?: keyof Colors;
   pePriceArs?: number;
   onClick: () => void;
+  reference: Dispatch<SetStateAction<HTMLElement | null>>;
 }
 
 const PriceLink = styled.a`
@@ -28,9 +30,10 @@ const PEArsPrice: React.FC<Props> = ({
   pePriceArs,
   color = "textSubtle",
   onClick,
+  reference,
 }) => {
   return pePriceArs ? (
-    <PriceLink onClick={onClick}>
+    <PriceLink ref={reference} onClick={onClick}>
       <PeronioCircle width="24px" mr="8px" />
       <Text color={color} bold>
         1 PE = {`$${pePriceArs.toFixed(3)}`} ARS
