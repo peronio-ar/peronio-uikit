@@ -7,8 +7,7 @@ import Flex from "../../components/Box/Flex";
 import Footer from "../../components/Footer";
 import MenuItems from "../../components/MenuItems/MenuItems";
 import { SubMenuItems } from "../../components/SubMenuItems";
-import { useMatchBreakpoints } from "../../hooks";
-import CakePrice from "../../components/CakePrice/CakePrice";
+import { useMatchBreakpoints, useTooltip } from "../../hooks";
 import Logo from "./components/Logo";
 import {
   MENU_HEIGHT,
@@ -86,6 +85,7 @@ const Menu: React.FC<NavProps> = ({
   buyCakeLabel,
   children,
   onClick,
+  contentTooltip,
 }) => {
   const { isMobile } = useMatchBreakpoints();
   const [showMenu, setShowMenu] = useState(true);
@@ -143,6 +143,17 @@ const Menu: React.FC<NavProps> = ({
     (subLink) => subLink.isMobileOnly
   );
 
+  // Tooltip
+  const {
+    tooltipVisible: tooltipVisibleHover,
+    targetRef: targetRefHover,
+    tooltip: tooltipHover,
+  } = useTooltip(contentTooltip, {
+    placement: "bottom",
+    trigger: "hover",
+    tooltipOffset: [0, 30],
+  });
+
   return (
     <Wrapper>
       <FixedContainer showMenu={showMenu} height={totalTopMenuHeight}>
@@ -166,7 +177,12 @@ const Menu: React.FC<NavProps> = ({
           <Flex alignItems="center" height="100%">
             {!isMobile && (
               <Box mr="12px">
-                <PEArsPrice onClick={onClick} pePriceArs={cakePriceUsd} />
+                <PEArsPrice
+                  reference={targetRefHover}
+                  onClick={onClick}
+                  pePriceArs={cakePriceUsd}
+                />
+                {tooltipVisibleHover && tooltipHover}
               </Box>
             )}
             <Box mt="4px">

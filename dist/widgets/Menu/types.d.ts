@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { FooterLinkType } from "../../components/Footer/types";
 import { MenuItemsType } from "../../components/MenuItems/types";
 import { SubMenuItemsType } from "../../components/SubMenuItems/types";
@@ -29,4 +29,5 @@ export interface NavProps {
     langs: Language[];
     setLang: (lang: Language) => void;
     onClick: () => void;
+    contentTooltip: React.ReactNode;
 }

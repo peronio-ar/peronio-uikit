@@ -16022,8 +16022,8 @@ var Timeline = function (_a) {
 
 var PriceLink = styled.a(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  svg {\n    transition: transform 0.3s;\n  }\n  :hover {\n    svg {\n      transform: scale(1.2);\n    }\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  svg {\n    transition: transform 0.3s;\n  }\n  :hover {\n    svg {\n      transform: scale(1.2);\n    }\n  }\n"])));
 var PEArsPrice = function (_a) {
-    var pePriceArs = _a.pePriceArs, _b = _a.color, color = _b === void 0 ? "textSubtle" : _b, onClick = _a.onClick;
-    return pePriceArs ? (React__default.createElement(PriceLink, { onClick: onClick },
+    var pePriceArs = _a.pePriceArs, _b = _a.color, color = _b === void 0 ? "textSubtle" : _b, onClick = _a.onClick, reference = _a.reference;
+    return pePriceArs ? (React__default.createElement(PriceLink, { ref: reference, onClick: onClick },
         React__default.createElement(Icon$1, { width: "24px", mr: "8px" }),
         React__default.createElement(Text, { color: color, bold: true },
             "1 PE = ", "$".concat(pePriceArs.toFixed(3)),
@@ -16924,7 +16924,7 @@ var BodyWrapper = styled(Box)(templateObject_5 || (templateObject_5 = __makeTemp
 var Inner = styled.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  flex-grow: 1;\n  transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  transform: translate3d(0, 0, 0);\n  max-width: 100%;\n"], ["\n  flex-grow: 1;\n  transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  transform: translate3d(0, 0, 0);\n  max-width: 100%;\n"])));
 var Menu$1 = function (_a) {
     var _b;
-    var userMenu = _a.userMenu, banner = _a.banner, globalMenu = _a.globalMenu, isDark = _a.isDark, toggleTheme = _a.toggleTheme, currentLang = _a.currentLang, setLang = _a.setLang, cakePriceUsd = _a.cakePriceUsd, links = _a.links, subLinks = _a.subLinks, footerLinks = _a.footerLinks, activeItem = _a.activeItem, activeSubItem = _a.activeSubItem, langs = _a.langs, buyCakeLabel = _a.buyCakeLabel, children = _a.children, onClick = _a.onClick;
+    var userMenu = _a.userMenu, banner = _a.banner, globalMenu = _a.globalMenu, isDark = _a.isDark, toggleTheme = _a.toggleTheme, currentLang = _a.currentLang, setLang = _a.setLang, cakePriceUsd = _a.cakePriceUsd, links = _a.links, subLinks = _a.subLinks, footerLinks = _a.footerLinks, activeItem = _a.activeItem, activeSubItem = _a.activeSubItem, langs = _a.langs, buyCakeLabel = _a.buyCakeLabel, children = _a.children, onClick = _a.onClick, contentTooltip = _a.contentTooltip;
     var isMobile = useMatchBreakpoints().isMobile;
     var _c = useState(true), showMenu = _c[0], setShowMenu = _c[1];
     var refPrevOffset = useRef(window.pageYOffset);
@@ -16968,6 +16968,12 @@ var Menu$1 = function (_a) {
     var homeLink = links.find(function (link) { return link.label === "Home"; });
     var subLinksWithoutMobile = subLinks === null || subLinks === void 0 ? void 0 : subLinks.filter(function (subLink) { return !subLink.isMobileOnly; });
     var subLinksMobileOnly = subLinks === null || subLinks === void 0 ? void 0 : subLinks.filter(function (subLink) { return subLink.isMobileOnly; });
+    // Tooltip
+    var _d = useTooltip(contentTooltip, {
+        placement: "bottom",
+        trigger: "hover",
+        tooltipOffset: [0, 30],
+    }), tooltipVisibleHover = _d.tooltipVisible, targetRefHover = _d.targetRef, tooltipHover = _d.tooltip;
     return (React__default.createElement(Wrapper, null,
         React__default.createElement(FixedContainer, { showMenu: showMenu, height: totalTopMenuHeight },
             banner && (React__default.createElement(TopBannerContainer, { height: topBannerHeight }, banner)),
@@ -16977,7 +16983,8 @@ var Menu$1 = function (_a) {
                     !isMobile && (React__default.createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, ml: "24px" }))),
                 React__default.createElement(Flex, { alignItems: "center", height: "100%" },
                     !isMobile && (React__default.createElement(Box, { mr: "12px" },
-                        React__default.createElement(PEArsPrice$1, { onClick: onClick, pePriceArs: cakePriceUsd }))),
+                        React__default.createElement(PEArsPrice$1, { reference: targetRefHover, onClick: onClick, pePriceArs: cakePriceUsd }),
+                        tooltipVisibleHover && tooltipHover)),
                     React__default.createElement(Box, { mt: "4px" },
                         React__default.createElement(LangSelector$1, { currentLang: currentLang, langs: langs, setLang: setLang, buttonScale: "xs", color: "textSubtle", hideLanguage: true })),
                     globalMenu,
