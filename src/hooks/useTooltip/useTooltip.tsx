@@ -9,14 +9,17 @@ import { TooltipOptions, TooltipRefs } from "./types";
 
 const invertTheme = (currentTheme: DefaultTheme) => {
   if (currentTheme.isDark) {
-    return light;
+    return dark;
   }
-  return dark;
+  return light;
 };
 
 const portalRoot = document.getElementById("portal-root");
 
-const useTooltip = (content: React.ReactNode, options: TooltipOptions): TooltipRefs => {
+const useTooltip = (
+  content: React.ReactNode,
+  options: TooltipOptions
+): TooltipRefs => {
   const {
     placement = "auto",
     trigger = "hover",
@@ -25,7 +28,9 @@ const useTooltip = (content: React.ReactNode, options: TooltipOptions): TooltipR
     tooltipOffset = [0, 10],
   } = options;
   const [targetElement, setTargetElement] = useState<HTMLElement | null>(null);
-  const [tooltipElement, setTooltipElement] = useState<HTMLElement | null>(null);
+  const [tooltipElement, setTooltipElement] = useState<HTMLElement | null>(
+    null
+  );
   const [arrowElement, setArrowElement] = useState<HTMLElement | null>(null);
 
   const [visible, setVisible] = useState(false);
@@ -184,7 +189,11 @@ const useTooltip = (content: React.ReactNode, options: TooltipOptions): TooltipR
   });
 
   const tooltip = (
-    <StyledTooltip ref={setTooltipElement} style={styles.popper} {...attributes.popper}>
+    <StyledTooltip
+      ref={setTooltipElement}
+      style={styles.popper}
+      {...attributes.popper}
+    >
       <ThemeProvider theme={invertTheme}>{content}</ThemeProvider>
       <Arrow ref={setArrowElement} style={styles.arrow} />
     </StyledTooltip>
