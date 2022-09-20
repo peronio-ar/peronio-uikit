@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
-import { PeronioCircle } from "../Svg";
+import { PeronioCircle, PeronioCircleV2 } from "../Svg";
 import Text from "../Text/Text";
 import Skeleton from "../Skeleton/Skeleton";
 import { Colors } from "../../theme";
@@ -34,7 +34,7 @@ const PEArsPrice: React.FC<Props> = ({
 }) => {
   return pePriceArs ? (
     <PriceLink ref={reference} onClick={onClick}>
-      <PeronioCircle width="24px" mr="8px" />
+      <PeronioCircleV2 width="24px" mr="8px" />
       <Text color={color} bold>
         1 PE = {`$${pePriceArs.toFixed(3)}`} ARS
       </Text>

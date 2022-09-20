@@ -155,6 +155,7 @@ export { default as WarningIcon } from "./Icons/Warning";
 export { default as PeronioCurrency } from "./Icons/PeronioCurrency";
 export { default as PeronioCircle } from "./Icons/PeronioCircle";
 export { default as PeronioCircleThick } from "./Icons/PeronioCircleThick";
+export { default as PeronioCircleV2 } from "./Icons/PeronioV2Circle";
 
 export { default as Svg } from "./Svg";
 export type { SvgProps } from "./types";

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PeronioCircle } from "../Svg";
+import { PeronioCircle, PeronioCircleV2 } from "../Svg";
 import Text from "../Text/Text";
 import Skeleton from "../Skeleton/Skeleton";
 import { Colors } from "../../theme";
@@ -27,7 +27,7 @@ const PriceLink = styled.a`
 const CakePrice: React.FC<Props> = ({ cakePriceUsd, color = "textSubtle" }) => {
   return cakePriceUsd ? (
     <PriceLink>
-      <PeronioCircle width="24px" mr="8px" />
+      <PeronioCircleV2 width="24px" mr="8px" />
       <Text color={color} bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
     </PriceLink>
   ) : (
